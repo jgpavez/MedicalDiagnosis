@@ -32,4 +32,53 @@ The next plot show 1) the number of facts in each sample and 2) the number of wo
 
  Facts x sample                   | Words x fact
 :-------------------------:|:-------------------------:
-<img src="https://github.com/jgpavez/MedicalDiagnosis/plots/facts_by_disease.png" width="350">  | <img src="https://github.com/jgpavez/MedicalDiagnosis/plots/word_by_fact.png" width="350" >
+<img src="https://github.com/jgpavez/MedicalDiagnosis/blob/master/plots/facts_by_disease.png" width="350">  | <img src="https://github.com/jgpavez/MedicalDiagnosis/blob/master/plots/word_by_fact.png" width="350" >
+
+## Training a RNN 
+
+A GRU network is trained on the dataset. The GRU consists of two layers of 128 units with a dropout of 0.5. The output is a softmax layer. Pre-trained word vectors are used as embedding layer. 
+The network works very well on the training and test dataset but is suboptimal on seld-made data. There are various possible ways to solve this that must be studied.
+
+Accuracy curves on the validation set are shown in the next image
+![Accuracy]()
+
+An example of output for data from the dataset is shown next. It is interesting to notice that the network outputs related diseases as the most probable 5, meaning that is understanding that those diseases are related (in this case all are psychological disorders).
+
+```
+Predictions for data:
+[[u'is', u'easily', u'distract', u'.'], [u'is', u'oftentimes', u'short', u'in', u'daily', u'activities', u'.'], [u'hyperactivity', u'symptoms', u'.'], [u'fidgetinesses', u'with', u'custodies', u'or', u'pess', u'or', u'wriggles', u'in', u'place', u'.'], [u'leaves', u'place', u'when', u'remain', u'sit', u'is', u'expect', u'.'], [u'runs', u'about', u'or', u'rises', u'in', u'inappropriate', u'situations', u'.'], [u'has', u'jobs', u'playing', u'or', u'workings', u'softly', u'.'], [u'is', u'oft', u'on', u'the', u'turn', u'acts', u'as', u'if', u'drive', u'by', u'a', u'motor', u'.'], [u'negotiations', u'excessively', u'.'], [u'impulsivity', u'symptoms', u'.'], [u'blurts', u'out', u'replies', u'before', u'enquiries', u'have', u'been', u'complete', u'.'], [u'has', u'trouble', u'look', u'crook', u'.'], [u'interrupts', u'or', u'irrupts', u'on', u'others', u'butts', u'into', u'conversations', u'or', u'games', u'.']]
+Disease: attention deficit hyperactivity disorder
+5 most prob. diseases: [u'attention deficit hyperactivity disorder', u'oppositional defiant disorder', u'seasonal affective disorder', u'anorexia nervosa', u'language disorder children']
+```
+
+Next, we test the neural network on seld-made symptoms, some examples are shown next. While in the first case the network correctly identify the disease, in the second case does not.
+
+```
+[u'oily skin', u'painful touch skin', u'face affected almost everywhere', u'chest affected', u'some blackheads', u'a lot of papules', u'papules', u'nodules', u'cysts']
+Disease: acne
+5 most prob. diseases: [u'acne', u'genital warts', u'scarlet fever', u'erythema multiforme', u'measles']
+
+[u'pulsating feeling in stomach', u'persistent back pain', u'abdominal pain', u'severe pain in the middle abdomen', u'dizziness', u'clammy skin', u'tachycardia', u'loss of consciousness']
+Disease: abdominal aortic aneurysm
+5 most prob. diseases: [u'pulmonary actinomycosis', u'mucormycosis', u'sleeping sickness', u'acute myeloid leukemia', u'bile duct obstruction']
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
