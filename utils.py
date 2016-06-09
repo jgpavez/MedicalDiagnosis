@@ -97,6 +97,20 @@ def vectorize_stories(data, word_idx, story_maxlen, query_maxlen):
     return (pad_sequences(X, maxlen=story_maxlen),
             pad_sequences(Xq, maxlen=query_maxlen), np.array(Y))
 
+def get_spacy_vectors(data, answer_dict, story_maxlen, model):
+    X = []
+    Y = []
+    for story,answer in data:
+        story = story[:story_maxlen] if len(story) > story_maxlen else story
+        x = [model(unicode(w)).vector for w in story]
+        X.append(x)
+        if not answer_dict is None:
+            y = np.zeros(len(answer_dict))
+            y[answer_dict[answer]] = 1
+            Y.append(y)
+    return (pad_sequences(X, maxlen=story_maxlen,dtype='float32'),
+            np.array(Y))
+
 def get_word_vectors(data, answer_dict, story_maxlen, model):
     X = []
     Y = []
