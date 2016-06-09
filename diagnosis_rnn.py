@@ -1,6 +1,6 @@
 '''
 Trains a RNN on medical diagnosis of diseases dataset
-   data is obtained scrapping from various online sources
+   data is obtained from various online sources
    Memory network needs to predict the disease using many symptoms listed as 
    natural language sentences
    
