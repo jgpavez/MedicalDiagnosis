@@ -1,6 +1,6 @@
 # Deep Medical Diagnosis
 
-QA solving using DL methods applied to medical diagnosis. The main models used are a RNN and a memnet.
+QA solving using DL methods applied to medical diagnosis.
 
 ## Dataset
 
